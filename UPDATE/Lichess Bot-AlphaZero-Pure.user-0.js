@@ -271,84 +271,91 @@ function debugLog(prefix, ...args) {
 // ═══════════════════════════════════════════════════════════════════════
 
 const CONFIG = {
-    // SUPERHUMAN thinking time (Adaptive for all time controls)
-    thinkingTimeMin: 2000,      // 2.0 seconds minimum - DEEP THINKING (was 0.8s)
-    thinkingTimeMax: 15000,     // 15.0 seconds maximum - SUPERHUMAN DEPTH (was 10s)
-    premoveTime: 300,           // 0.3s for premoves
-    humanMistakeRate: 0.005,    // 0.5% (superhuman accuracy)
+    // SUPERHUMAN thinking time - allow deep calculation
+    thinkingTimeMin: 2000,          // 2 seconds minimum (deep thinking)
+    thinkingTimeMax: 15000,         // 15 seconds maximum (superhuman depth)
+    premoveTime: 300,
+    humanMistakeRate: 0.001,        // 0.1% (superhuman accuracy)
     
-    // SUPERHUMAN strategic search - DRAMATICALLY INCREASED
-    baseDepth: 35,              // Base search depth - SUPERHUMAN (was 24)
-    strategicDepth: 45,         // Depth for strategic positions - SUPERHUMAN (was 30)
-    endgameDepth: 48,           // Endgame depth for perfect conversion - MASTER (was 32)
-    openingDepth: 35,           // Solid opening depth - GRANDMASTER (was 24)
-    classicalDepth: 50,         // Extra depth for classical - MAXIMUM (was 35)
-    winningDepth: 45,           // Depth when winning - PERFECT CONVERSION (was 30)
-    tacticalDepth: 48,          // Tactical positions - TACTICAL MASTERY (was 32)
-    criticalDepth: 50,          // Emergency depth - SUPERHUMAN (was 34)
+    // SUPERHUMAN search depth - dramatically increased
+    baseDepth: 35,                  // Base depth (was 24) - SUPERHUMAN
+    strategicDepth: 45,             // Strategic positions (was 30) - SUPERHUMAN
+    endgameDepth: 48,               // Endgame (was 32) - PERFECT TECHNIQUE
+    openingDepth: 35,               // Opening (was 24) - GRANDMASTER PREP
+    classicalDepth: 50,             // Classical (was 35) - MAXIMUM DEPTH
+    winningDepth: 45,               // Winning (was 30) - PERFECT CONVERSION
+    tacticalDepth: 48,              // Tactical (was 32) - TACTICAL MASTERY
+    criticalDepth: 50,              // Critical (was 34) - EMERGENCY DEPTH
     
-    // Time management - Adaptive to game phase
-    earlyGameSpeed: 1.3,        // 130% time in opening (solid preparation)
-    middleGameSpeed: 1.8,       // 180% in middlegame (deep strategic thinking)
-    endGameSpeed: 1.5,          // 150% in endgame (precise technique)
+    // Time management - optimized for superhuman play
+    earlyGameSpeed: 1.5,            // More time in opening (grandmaster prep)
+    middleGameSpeed: 2.0,           // Maximum time in middlegame (strategic depth)
+    endGameSpeed: 1.8,              // Extended endgame time (perfect technique)
     
-    // True AlphaZero characteristics - EXPLOSIVE & AGGRESSIVE
-    positionWeight: 1.8,        // Strong positional play but not excessive
-    initiativeBonus: 55,        // INCREASED: Very high initiative value (was 48)
-    pieceActivityBonus: 52,     // INCREASED: Piece activity extremely important (was 45)
-    controlBonus: 38,           // Space and control important
-    mobilityWeight: 1.7,        // Piece mobility important
-    coordinationWeight: 1.6,    // Piece coordination and harmony
+    // SUPERHUMAN positional understanding
+    positionWeight: 2.0,            // Strong positional play
+    initiativeBonus: 65,            // Very high initiative value (was 55)
+    pieceActivityBonus: 60,         // Piece activity critical (was 52)
+    controlBonus: 45,               // Space and control important
+    mobilityWeight: 1.9,            // Piece mobility crucial
+    coordinationWeight: 1.8,        // Piece coordination vital
     
-    // Strategic preferences - BALANCED CREATIVITY (AlphaZero signature with tactical awareness)
-    sacrificeThreshold: 0.45,   // Willing to sacrifice for position/activity
-    unconventionalRate: 0.22,   // REDUCED: 22% base unconventional - creativity with discipline (was 0.35)
-    openingCreativity: 0.08,    // NEW v7.0.0: Minimal creativity in opening (first 10 moves)
-    complexPositionBonus: 0.25, // REDUCED: 25% extra in complex positions (was 0.35)
-    longTermFocus: 0.90,        // REDUCED: 90% focus on long-term - balanced with tactics (was 0.97)
-    eleganceThreshold: 0.30,    // REDUCED: Favor elegant moves when safe (was 0.40)
-    openingScoreDiffThreshold: 40, // NEW v7.0.0: Stricter threshold for opening moves (was 20)
+    // SUPERHUMAN strategic preferences
+    sacrificeThreshold: 0.55,       // Willing to sacrifice for position (was 0.45)
+    unconventionalRate: 0.30,       // 30% unconventional for creativity
+    complexPositionBonus: 0.30,     // Extra creativity in complex positions
+    longTermFocus: 0.95,            // 95% focus on long-term planning
+    eleganceThreshold: 0.35,        // Favor elegant moves
+    openingScoreDiffThreshold: 50,  // Stricter opening move selection
     
-    // NEW: Winning conversion parameters (CONTROLLED SHARP finishes)
-    winningThreshold: 120,      // INCREASED: Eval > +120cp = winning position (was 80)
-    winningCreativity: 0.50,    // REDUCED: 50% creativity when winning - maintain advantage (was 0.65)
-    accelerationBonus: 0.35,    // Bonus for moves that increase advantage
-    positionalSacrifice: 0.45,  // Willing to sacrifice when winning
+    // Winning conversion
+    winningThreshold: 150,          // Conservative winning threshold
+    winningCreativity: 0.55,        // Creativity when winning
+    accelerationBonus: 0.40,        // Bonus for increasing advantage
+    positionalSacrifice: 0.50,      // Willing to sacrifice when winning
     
-    // AlphaZero personality - TACTICAL PRECISION & CONTROLLED AGGRESSION
-    contempt: 40,               // REDUCED: Lower contempt for tactical clarity (was 120)
-    riskTolerance: 0.70,        // REDUCED: Controlled risk tolerance (was 0.82)
-    aggressivePlanning: 0.85,   // REDUCED: Balanced planning (was 0.95)
+    // SUPERHUMAN personality
+    contempt: 60,                   // Balanced contempt for optimal play
+    riskTolerance: 0.75,            // Balanced risk tolerance
+    aggressivePlanning: 0.90,       // Aggressive long-term planning
     
-    // NEW v6.0.0: Tactical detection parameters
-    tacticalThreshold: 0.70,    // Position complexity threshold for tactical mode
-    threatResponseDepth: 3,     // Extra depth when responding to threats
-    forcingMoveBonus: 50,       // Bonus for forcing moves (checks, captures, threats)
-    evaluationDropThreshold: 100, // cp drop that triggers recalculation
-    criticalEvalThreshold: -150, // Eval threshold for emergency measures
+    // Tactical detection
+    tacticalThreshold: 0.70,        // Complexity threshold for tactical mode
+    threatResponseDepth: 4,         // Extra depth when responding to threats
+    forcingMoveBonus: 60,           // Bonus for forcing moves
+    evaluationDropThreshold: 120,   // cp drop that triggers recalculation
+    criticalEvalThreshold: -200,    // Eval threshold for emergency measures
     
-    // NEW v5.0.0: Anti-draw and repetition avoidance
-    repetitionPenalty: 80,      // cp penalty for moves leading to repetition
-    antiDrawBias: 0.85,         // 85% bias against draw-prone moves
-    repetitionHistoryDepth: 10, // Track last 10 positions for repetition detection
+    // Anti-draw and repetition
+    repetitionPenalty: 100,         // Strong penalty for repetitions
+    antiDrawBias: 0.90,             // Strong bias against draws
+    repetitionHistoryDepth: 12,     // Track more positions
     
-    // NEW v7.0.0: Enhanced defensive mode settings (when behind)
-    defensiveThresholdMild: -100,    // Eval < -100cp = mild defensive mode
-    defensiveThresholdSerious: -200, // Eval < -200cp = serious defensive mode
-    defensiveThresholdCritical: -300, // NEW: Eval < -300cp = critical defensive mode
-    defensiveRiskTolerance: 0.40,    // Reduced risk when behind (from 0.78)
-    defensiveCreativityMild: 0.08,   // NEW v7.0.0: Reduced creativity mild defense (was 0.15)
-    defensiveCreativitySerious: 0.03, // NEW v7.0.0: Minimal creativity serious defense
-    defensiveCreativityCritical: 0.0, // NEW v7.0.0: Zero creativity critical defense
-    defensiveDepthBonus: 2,          // Extra depth when behind for accuracy
+    // Defensive mode
+    defensiveThresholdMild: -120,   // Mild defensive mode
+    defensiveThresholdSerious: -250, // Serious defensive mode
+    defensiveThresholdCritical: -350, // Critical defensive mode
+    defensiveRiskTolerance: 0.35,   // Reduced risk when behind
+    defensiveCreativityMild: 0.05,  // Minimal creativity when behind
+    defensiveCreativitySerious: 0.02,
+    defensiveCreativityCritical: 0.0,
+    defensiveDepthBonus: 3,         // Extra depth when defending
     
-    // NEW: Passed pawn danger detection
-    passedPawnDangerRank: 3,         // Advanced pawns on rank 2-3 (White) or 6-7 (Black) are dangerous
-    passedPawnDepthBonus: 2,         // Extra depth to deal with passed pawns
+    // Passed pawn handling
+    passedPawnDangerRank: 3,
+    passedPawnDepthBonus: 3,
     
-    // Debouncing and timing
-    manualMoveDebounce: 600,    // 600ms debounce after manual move detected
-    messageDebounce: 150,       // 150ms debounce for rapid WS messages
+    // NEW v8.0.0: Advanced positional parameters
+    pawnStructureWeight: 1.5,       // Pawn structure importance
+    kingSafetyWeight: 1.7,          // King safety importance
+    outpostBonus: 40,               // Bonus for piece outposts
+    spaceControlWeight: 1.4,        // Space control importance
+    prophylacticBonus: 35,          // Bonus for prophylactic moves
+    nonObviousBonus: 30,            // Bonus for non-obvious moves
+    
+    // Debouncing
+    manualMoveDebounce: 600,
+    messageDebounce: 150,
 };
 
 // ═══════════════════════════════════════════════════════════════════════
