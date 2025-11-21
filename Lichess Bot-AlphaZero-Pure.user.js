@@ -323,7 +323,7 @@ const CONFIG = {
     thinkingTimeMin: 2000,          // 2 seconds minimum (deep thinking)
     thinkingTimeMax: 15000,         // 15 seconds maximum (superhuman depth)
     premoveTime: 300,
-    humanMistakeRate: 0.005,        // 0.5% (superhuman accuracy)
+    humanMistakeRate: 0.001,        // 0.5% (superhuman accuracy)
     
     // SUPERHUMAN search depth - dramatically increased
     baseDepth: 35,                  // Base depth (was 24) - SUPERHUMAN
