@@ -15,7 +15,6 @@
  * ═══════════════════════════════════════════════════════════════════════════
  * 
  * REVOLUTIONARY v8.0.0 ENHANCEMENTS (SUPERHUMAN LEVEL):
- * 🚀🚀 REVOLUTIONARY: Massive opening book expansion - 100+ grandmaster positions
  * 🚀🚀 REVOLUTIONARY: Superhuman search depth - 35-50+ (was 24-35)
  * 🚀🚀 REVOLUTIONARY: Advanced pawn structure evaluation - isolated, passed, doubled, backward
  * 🚀🚀 REVOLUTIONARY: King safety analysis - pawn shield, open files, attacking chances
