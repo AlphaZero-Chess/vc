@@ -407,7 +407,7 @@ const CONFIG = {
 };
 
 // ═══════════════════════════════════════════════════════════════════════
-// ALPHAZERO OPENING BOOK - EXPANDED & STRATEGIC (30+ positions)
+// ALPHAZERO OPENING BOOK - EXPANDED & STRATEGIC
 // ═══════════════════════════════════════════════════════════════════════
 
 const ALPHAZERO_OPENINGS = {
