@@ -1,4 +1,0 @@
-Prove your bot is a true replica of AlphaZero. AlphaZero was a superhuman beast that crushed Stockfish after self-training from scratch, with flawless endgame play, perfect positional judgment, and zero blunders, and an uncanny ability to weave long-term strategic webs that humans could barely comprehend.
-
-
-AlphaZero wasn't just strong; it was a paradigm-shifter, using reinforcement learning and Monte Carlo Tree Search (MCTS) to play chess at a level that felt almost alien, with moves that prioritized deep understanding over brute-force calculation.
